@@ -62,6 +62,8 @@ export class CrDetailComponent implements OnInit {
 	/** Whether the current user may approve the loaded CR. */
 	get canApprove(): boolean {
 		// NOTE: this only looks at the CR status. The UI must also respect the user's permissions.
+		const user = this.session.user;
+		if (!user.policies.includes("cr_a_o")) return false;
 		return this.detail?.status === 'PENDING_APPROVAL';
 	}
 
