@@ -21,7 +21,7 @@
 			<h3>Proposed changes</h3>
 			<table class="cr-diff__table">
 				<thead>
-					<tr><th>SKU</th><th>Change</th><th>Before</th><th>After</th></tr>
+					<tr><th>SKU</th><th>Change</th><th>Before</th><th>After</th><th>Total</th><th>Delta</th></tr>
 				</thead>
 				<tbody>
 					<tr *ngFor="let row of diff" class="cr-diff__row" [attr.data-kind]="row.kind">
@@ -29,6 +29,8 @@
 						<td class="cr-diff__kind">{{ row.kind }}</td>
 						<td>{{ row.baseline ? row.baseline.quantity + ' × ' + fmt(row.baseline.unitPrice) : '—' }}</td>
 						<td>{{ row.proposed ? row.proposed.quantity + ' × ' + fmt(row.proposed.unitPrice) : '—' }}</td>
+						<td>{{ fmt(row.proposed.quantity * row.proposed.unitPrice) }}</td>
+						<td>{{ fmt(row.proposed.unitPrice) }}</td>
 					</tr>
 				</tbody>
 			</table>
